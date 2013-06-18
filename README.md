@@ -1,3 +1,3 @@
 VEngine
 
-simpel java game library for lwjgl
+Simple java game library for lwjgl
