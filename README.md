@@ -1,4 +1,3 @@
-
 Simple java game library for lwjgl
 
 --
@@ -6,6 +5,7 @@ Simple java game library for lwjgl
 Handles: 
  - Game loop
  - Drawing
+ - Math
  - Asset loading
  - Gui
 
