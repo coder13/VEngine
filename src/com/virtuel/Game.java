@@ -41,12 +41,16 @@ public abstract class Game {
 		return hasStarted;
 	}
 	
+	public boolean ready(){
+		return hasStarted && cam!=null && fontRender!=null;
+	}
+	
 	public Camera getCam() {
 		return cam;
 	}
 	
-	public boolean ready(){
-		return hasStarted && cam!=null && fontRender!=null;
+	public FontRenderer getFontRenderer() {
+		return fontRender;
 	}
 	
 	public Engine getParent(){

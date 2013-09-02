@@ -6,18 +6,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 
+import com.virtuel.IO.IOUtil;
 import com.virtuel.math.VMath;
 import com.virtuel.math.vec.Vec2;
 import com.virtuel.util.Color;
-import com.virtuel.util.Font;
-import com.virtuel.util.IOUtil;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
 /**
- * * Do not forget to call init()!
- * 
+ * Do not forget to call {@link #init()}!
  */
 public class FontRenderer {
 	private static Renderer render = Renderer.getPerferedRenderer();
@@ -35,7 +33,7 @@ public class FontRenderer {
 
 		try {
 			InputStream glyphWidthStream = IOUtil
-					.getPathAsStream("res/glyph_sizes.bin");
+					.getPathAsStream("res/font/glyph_sizes.bin");
 			glyphWidthStream.read(glyphWidth);
 		} catch (IOException var18) {
 			throw new RuntimeException(var18);
@@ -49,7 +47,7 @@ public class FontRenderer {
 
 		try {
 			InputStream glyphWidthStream = IOUtil
-					.getPathAsStream("res/glyph_sizes.bin");
+					.getPathAsStream("res/font/glyph_sizes.bin");
 			glyphWidthStream.read(glyphWidth);
 		} catch (IOException var18) {
 			throw new RuntimeException(var18);
@@ -72,12 +70,13 @@ public class FontRenderer {
 		return this;
 	}
 
+	/** By default, the x and y coordinates get multiplied by the fontSize. Set false if you don't want this done. */
 	public FontRenderer setAutoAlign(boolean autoAlign) {
 		font.AutoAlign = autoAlign;
 		return this;
 	}
 
-	
+	/** Loads the font image into memory to be used. */
 	public void init() {
 		if (TextureID == -1)
 			TextureID = glGenTextures();
@@ -207,8 +206,7 @@ public class FontRenderer {
 				pos.X = x;
 				break;
 			case '\t':
-				pos.X = VMath.round((pos.X) / font.tabLength + 1)
-						* font.tabLength;
+				pos.X = (double)VMath.round((pos.X) / font.tabLength + 1) * font.tabLength;
 				break;
 			case ' ':
 				pos.X += font.Size;
@@ -244,8 +242,7 @@ public class FontRenderer {
 				pos.X = x;
 				break;
 			case '\t':
-				pos.X = VMath.round((pos.X) / font.tabLength + 1)
-						* font.tabLength;
+				pos.X = (double)VMath.round((pos.X) / font.tabLength + 1) * font.tabLength;
 				break;
 			case ' ':
 				pos.X += font.Size;
@@ -315,5 +312,8 @@ public class FontRenderer {
 		return font;
 	}
 
+	public int getFontHeight(){
+		return font.Height;
+	}
 
 }

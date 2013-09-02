@@ -5,9 +5,9 @@ import java.util.List;
 
 import com.virtuel.math.Rect;
 import com.virtuel.math.vec.Vec2;
+import com.virtuel.rendering.Font;
 import com.virtuel.rendering.FontRenderer;
 import com.virtuel.util.Color;
-import com.virtuel.util.Font;
 
 public abstract class Control {
 	public static final int STATE_NONE = 0;

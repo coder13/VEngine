@@ -20,14 +20,19 @@ import java.nio.ByteBuffer;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
+import com.virtuel.math.vec.Vec2;
+
 public class Texture {
 
 	protected int textureID, Width, Height;
 	protected int[] texData;
+	protected boolean Blur, Clamp;
 	
 	public Texture(int[] textureData, int width, int height, boolean blur, boolean clamp) {
 		Width = width;
 		Height = height;
+		Blur = blur;
+		Clamp = clamp;
 		textureID = GL11.glGenTextures();
 		texData = textureData;
 		
@@ -71,6 +76,10 @@ public class Texture {
 		return Height;
 	}
 	
+	public Vec2.f getTexCoordsFor(int x, int y){
+		return new Vec2.f(1f/(float)Width * (float)x, 1f/(float)Height * (float)y);
+	}
+	
 	
 	public static Texture load(BufferedImage image, boolean blur, boolean clamp) {
 		Texture texture = new Texture(getContents(image), image.getWidth(), image.getHeight(), blur, clamp);
@@ -82,6 +91,9 @@ public class Texture {
 		return texture;
 	}
 	
+	public static TextureAtlas load(Texture texture, int cellWidth, int cellHeight){
+		return new TextureAtlas(texture, cellWidth, cellHeight);
+	}
 	
 	public static int[] getContents(BufferedImage image) {
 		int width = image.getWidth(), height = image.getHeight();

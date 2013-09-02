@@ -16,15 +16,13 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.virtuel.Engine;
-import com.virtuel.ImageHandler;
 import com.virtuel.math.Rect;
+import com.virtuel.rendering.Font;
 import com.virtuel.rendering.FontRenderer;
 import com.virtuel.rendering.Renderer;
 import com.virtuel.rendering.texturing.Texture;
 import com.virtuel.rendering.texturing.TextureMap;
 import com.virtuel.util.Color;
-import com.virtuel.util.Font;
-import com.virtuel.util.IOUtil;
 
 public class Theme {
 	

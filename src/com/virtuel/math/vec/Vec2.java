@@ -15,6 +15,10 @@ public abstract class Vec2<N> {
 			
 		}
 
+		public i(int xy){
+			super(xy);
+		}
+		
 		@Override
 		public Vec2.i scale(Integer a) {
 			return new Vec2.i(X*a, Y*a);
@@ -22,12 +26,12 @@ public abstract class Vec2<N> {
 
 		@Override
 		public Vec2.i add(Vec2<Integer> vec) {
-			return new Vec2.i(X-vec.X, Y-vec.Y);
+			return new Vec2.i(X+vec.X, Y+vec.Y);
 		}
 
 		@Override
 		public Vec2.i sub(Vec2<Integer> vec) {
-			return new Vec2.i(X*vec.X, Y*vec.Y);
+			return new Vec2.i(X-vec.X, Y-vec.Y);
 		}
 
 		@Override
@@ -88,6 +92,10 @@ public abstract class Vec2<N> {
 			super(x, y);
 		}
 
+		public f(float xy){
+			super(xy);
+		}
+		
 		@Override
 		public Vec2.f scale(Float a) {
 			return new Vec2.f(X*a, Y*a);
@@ -155,6 +163,10 @@ public abstract class Vec2<N> {
 			super(x, y);
 		}
 
+		public d(double xy){
+			super(xy);
+		}
+		
 		@Override
 		public Vec2.d scale(Double a) {
 			return new Vec2.d(X*a, Y*a);
@@ -199,6 +211,10 @@ public abstract class Vec2<N> {
 			double mag = mag();
 			return new Vec2.d(X/mag, Y/mag);
 		}
+		
+		public Vec2.d normalize() {
+			return new Vec2.d(1.0/X, 1.0/Y);
+		}
 				
 		@Override
 		public Double mag() {
@@ -222,6 +238,11 @@ public abstract class Vec2<N> {
 	public Vec2(N x, N y){
 		X = x;
 		Y = y;
+	}
+
+	public Vec2(N xy){
+		X = xy;
+		Y = xy;
 	}
 	
 	public void set(N x, N y){

@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.lwjgl.opengl.GL20;
 
-import com.virtuel.util.IOUtil;
+import com.virtuel.IO.IOUtil;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.*;

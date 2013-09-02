@@ -62,6 +62,12 @@ public class Window {
 		return this;
 	}
 	
+	public Window setCanvas(Canvas canvas) {
+		canvas.setSize(Width, Height);
+		Parent = canvas;
+		return this;
+	}
+	
 	
 	public void updateSize() {
 		Width  = Display.getWidth();
@@ -103,7 +109,8 @@ public class Window {
 		Display.setTitle(Title);
 		Display.setVSyncEnabled(VSync);
 		Display.setResizable(Resizable);
-		if (Parent != null) Display.setParent(Parent);
+		if (Parent != null) 
+			Display.setParent(Parent);
 		Display.create(new PixelFormat());
 		
 		updateSize();

@@ -305,7 +305,7 @@ public abstract class Camera {
 	protected Vec3.d Position;
 	/** The rotation of the camera. */
 	protected Vec3.d Rotation;
-	/** The speed of the camera. */
+	/** The speed of the camera. Can be used to scale the velocity. */
 	protected double Speed = 1;
 	
 	protected FloatBuffer matrix;
@@ -319,20 +319,17 @@ public abstract class Camera {
 	
 	
 	/** Sets the position of the camera and returns itself. */
-	
 	public Camera setPos(Vec3.d pos){
 		this.Position = pos;
 		return this;
 	}
 
 	/** Sets the position of the camera and returns itself. */
-	
 	public Camera setPos(double x, double y){
 		return this.setPos(x, y, getZ());
 	}
 	
 	/** Sets the position of the camera and returns itself. */
-	
 	public Camera setPos(double x, double y, double z){
 		Position.set(x, y, z);
 		return this;	
@@ -354,29 +351,23 @@ public abstract class Camera {
 	}
 	
 	/** Sets the rotation of the camera and returns itself. */
-	
 	public Camera setRot(Vec3.d rot){
 		this.Rotation = rot;
 		return this;
 	}
 
 	/** Sets the rotation of the camera and returns itself. */
-	
 	public Camera setRot(double pitch, double Yaw, double roll){
 		return this.setRot(new Vec3.d(pitch, Yaw, roll));
 	}
 
 	/** Sets the speed of the camera and returns itself. */
-	
 	public Camera setSpeed(double speed){
 		this.Speed = speed;
 		return this;
 	}
 
-	
-	/** Sets up the projection matrix for the camera. */
-	
-	
+	/** Creates the projection matrix. Must be called. */
 	public Camera setup() {
 		matrix = GLUtil.createFloatBuffer(16);
 		glMatrixMode(GL_PROJECTION);
@@ -387,9 +378,12 @@ public abstract class Camera {
 		return this;
 	}
 
+	
+	/** Defines the projection matrix for the camera. */
 	protected abstract void create();
 
 	
+	/** Loads the projection matrix and switches back into the modelView matrix. */
 	public void use() {
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
@@ -404,6 +398,7 @@ public abstract class Camera {
 		updateInput(delta);
 	}
 	
+	/** Updates the input and may translate the position or rotation by input. */
 	protected abstract void updateInput(double delta);
 	
 	
@@ -415,7 +410,6 @@ public abstract class Camera {
 		return translate(x, y, 0);
 	}
 	
-	
 	/** Translates the camera with the given x, y and z coords.
 	 * @param x - x value.
 	 * @param y - y value.
@@ -423,12 +417,11 @@ public abstract class Camera {
 	 * @return the distance between the current position and the new position. */
 	public double translate(double x, double y, double z){
 		Vec3.d dist = new Vec3.d(x,y,z);
-		Position.add(dist);
+		Position = Position.add(dist);
 		return dist.length();
 	}
 
 	/** Sets the rotation of the camera. */
-	
 	public double setRotation(double pitch, double yaw, double roll){
 		Vec3.d rot = new Vec3.d(pitch, yaw, roll);
 		Rotation = rot;
@@ -436,7 +429,6 @@ public abstract class Camera {
 	}
 	
 	/** Applies the model view Matrix. Should be called after update. */
-	
 	public void applyModelViewMatrix(){
 		glRotated(getPitch(), 1, 0, 0);
 		glRotated(getYaw(),   0, 1, 0);
@@ -446,55 +438,54 @@ public abstract class Camera {
 	
 	
 	/** @return the position of the camera. */
-	
 	public Vec3.d getPosition(){
 		return new Vec3.d(getX(), getY(), getZ());
 	}
 	
 	/** @return the X value. */
-	
 	public double getX(){
 		return Position.X;
 	}
 
 	/** @return the Y value. */
-	
 	public double getY(){
 		return Position.Y;
 	}
 
-	/** @return the Z value. */
-	
+	/** @return the Z value. */	
 	public double getZ(){
 		return Position.Z;
 	}
 	
 	/** @return the rotation of the camera. */
-	
 	public Vec3.d getRotation(){
 		return Rotation;
 	}
 
 	/** @return the Pitch. */
-	
 	public double getPitch(){
 		return Rotation.X;
 	}
 
 	/** @return the Yaw. */
-	
-	public double getYaw(){
+	public double getYaw() {
 		return Rotation.Y;
 	}
 
 	/** @return the Roll. */
-	
-	public double getRoll(){
+	public double getRoll() {
 		return Rotation.Z;
 	}
 
+	/** */
+	public FloatBuffer getMatrix() {
+		return matrix;
+	}
+	
+	/** Returns the postition and rotation. */
 	@Override
 	public String toString() {
 		return String.format("[%s, %s]", Position, Rotation);
 	}
+
 }

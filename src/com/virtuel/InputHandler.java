@@ -29,6 +29,7 @@ public class InputHandler {
 		keys = new byte[Keyboard.KEYBOARD_SIZE];
 		buttons = new byte[Mouse.getButtonCount()];
 		lastKeys = new ArrayList<Character>();
+		
 	}
 	
 	public static void pollInput(){
@@ -80,6 +81,8 @@ public class InputHandler {
 			eventButton = Mouse.getEventButton();
 			buttonState = Mouse.getEventButtonState();
 			if (eventButton >= 0 && eventButton < buttons.length){
+				mouseClickPos = new Vec2.i(Mouse.getX(), Mouse.getY());
+				
 				if (DEBUG) {
 					System.out.println(Mouse.getButtonName(eventButton) + ": " + (buttonState?"down":"up"));
 					System.out.println(Mouse.getButtonName(eventButton) + ": " + buttons[eventButton]);
@@ -137,12 +140,27 @@ public class InputHandler {
 		return new Vec2.i(Mouse.getX(), Mouse.getY());
 	}
 
+	/** 
+	 * @param scale- divides the x and y by the input to scale the mouse position to a number relevant to the game camera assuming
+	 * the camera is 2d and ortho.
+	 * */
+	public static Vec2.i getMousePosition(int scale) {
+		return new Vec2.i(Mouse.getX()/scale, Mouse.getY()/scale);
+	}
+
 
 	public static Vec2.i getMouseClickedPosition(){
 		return mouseClickPos;
 	}
 	
-
+	public static int getRawMouseX() {
+		return Mouse.getX();
+	}
+	
+	public static int getRawMouseY() {
+		return Mouse.getY();
+	}
+	
 	public static int getMouseX(){
 		if (FlipX)
 			return Engine.Instance.window.getWidth()-Mouse.getX();

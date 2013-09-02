@@ -235,7 +235,7 @@ public abstract class Vec3<N> {
 		
 		@Override
 		public Double length() {
-			return VMath.sqrt(mag());
+			return (double)VMath.sqrt(mag());
 		}
 
 		@Override

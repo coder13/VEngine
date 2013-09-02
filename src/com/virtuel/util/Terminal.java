@@ -9,18 +9,21 @@ import org.lwjgl.opengl.GL11;
 
 import com.virtuel.InputHandler;
 import com.virtuel.Time;
+import com.virtuel.IO.IOUtil;
 import com.virtuel.gui.Control;
 import com.virtuel.math.VMath;
 import com.virtuel.math.vec.Vec2;
+import com.virtuel.rendering.Font;
 import com.virtuel.rendering.FontRenderer;
 import com.virtuel.rendering.Tessellator;
 import com.virtuel.util.commands.Commands;
 
+/** Minecraft-like terminal. */
 public class Terminal extends Control {
 
 	public static Terminal Instance;
 	
-	private class TerminalLine {
+	public class TerminalLine {
 		
 		private String Text;
 		private int time = 4000;
@@ -157,8 +160,6 @@ public class Terminal extends Control {
 			Lines.add(new TerminalLine(command));
 		}
 	}
-
-	
 	
 	
 	public void draw() {

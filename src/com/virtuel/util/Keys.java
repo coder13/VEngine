@@ -42,33 +42,35 @@ public class Keys {
 	public static int KEY_Y				= Keyboard.KEY_Y;
 	public static int KEY_Z				= Keyboard.KEY_Z;
 
-	public static int KEY_ADD				= Keyboard.KEY_ADD;
+	public static int KEY_ADD			= Keyboard.KEY_ADD;
 	public static int KEY_MINUS			= Keyboard.KEY_MINUS;
-	public static int KEY_EQUALS			= Keyboard.KEY_EQUALS;
-	public static int KEY_UNDERSCORE 		= Keyboard.KEY_UNDERLINE;
+	public static int KEY_EQUALS		= Keyboard.KEY_EQUALS;
+	public static int KEY_UNDERSCORE 	= Keyboard.KEY_UNDERLINE;
 	public static int KEY_GRAVE	 		= Keyboard.KEY_GRAVE;	
 	
-	public static int KEY_UP 				= Keyboard.KEY_UP;
+	public static int KEY_UP 			= Keyboard.KEY_UP;
 	public static int KEY_DOWN 			= Keyboard.KEY_DOWN;
 	public static int KEY_LEFT 			= Keyboard.KEY_LEFT;
-	public static int KEY_RIGHT 			= Keyboard.KEY_RIGHT;
-	public static int KEY_LSHIFT	 		= Keyboard.KEY_LSHIFT;
-	public static int KEY_RSHIFT			= Keyboard.KEY_RSHIFT;
-	public static int KEY_TAB	 			= Keyboard.KEY_TAB;
+	public static int KEY_RIGHT 		= Keyboard.KEY_RIGHT;
+	public static int KEY_LSHIFT	 	= Keyboard.KEY_LSHIFT;
+	public static int KEY_RSHIFT		= Keyboard.KEY_RSHIFT;
+	public static int KEY_LCONTROL	 	= Keyboard.KEY_LCONTROL;
+	public static int KEY_RCONTROL	 	= Keyboard.KEY_RCONTROL;
+	public static int KEY_TAB	 		= Keyboard.KEY_TAB;
 	public static int KEY_SPACE			= Keyboard.KEY_SPACE;
 
 	public static int KEY_BACKSPACE		= Keyboard.KEY_BACK;
-	public static int KEY_ESCAPE			= Keyboard.KEY_ESCAPE;
-	public static int KEY_END				= Keyboard.KEY_END;
-	public static int KEY_ENTER 			= Keyboard.KEY_RETURN;
+	public static int KEY_ESCAPE		= Keyboard.KEY_ESCAPE;
+	public static int KEY_END			= Keyboard.KEY_END;
+	public static int KEY_ENTER 		= Keyboard.KEY_RETURN;
 	
-	public static int KEY_F1 				= Keyboard.KEY_F1;
-	public static int KEY_F2 				= Keyboard.KEY_F2;
-	public static int KEY_F3 				= Keyboard.KEY_F3;
-	public static int KEY_F4 				= Keyboard.KEY_F4;
-	public static int KEY_F5 				= Keyboard.KEY_F5;
-	public static int KEY_F6 				= Keyboard.KEY_F6;
-	public static int KEY_F7 				= Keyboard.KEY_F7;
-	public static int KEY_F8 				= Keyboard.KEY_F8;
-	public static int KEY_F9 				= Keyboard.KEY_F9;
+	public static int KEY_F1 			= Keyboard.KEY_F1;
+	public static int KEY_F2 			= Keyboard.KEY_F2;
+	public static int KEY_F3 			= Keyboard.KEY_F3;
+	public static int KEY_F4 			= Keyboard.KEY_F4;
+	public static int KEY_F5 			= Keyboard.KEY_F5;
+	public static int KEY_F6 			= Keyboard.KEY_F6;
+	public static int KEY_F7 			= Keyboard.KEY_F7;
+	public static int KEY_F8 			= Keyboard.KEY_F8;
+	public static int KEY_F9 			= Keyboard.KEY_F9;
 }

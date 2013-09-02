@@ -61,6 +61,11 @@ public abstract class Engine implements IEngine {
 		return this;
 	}
 	
+	public void stopCurrentGame(){
+		currentGame.stop();
+		currentGame = null;
+	}
+	
 	
 	@Override
 	public void init() throws LWJGLException {
@@ -105,19 +110,22 @@ public abstract class Engine implements IEngine {
 			}
 			
 			// Draws the game as long as there is a game to draw and its ready 
-			if (currentGame!=null && currentGame.ready()) {
+			if (currentGame != null && currentGame.ready()) {
 				if (!Paused)
 					currentGame.update();
-				currentGame.getCam().use();
-				currentGame.drawGame();
-				
-				error |= checkForGLErrors("Game Draw");
 			}
 
 			// Updates the mouse input for the menu
 			menuHandler.updateControls();
 			
 			update();
+			
+			if (currentGame != null && currentGame.ready()) {
+				currentGame.getCam().use();
+				currentGame.drawGame();
+				
+				error |= checkForGLErrors("Game Draw");
+			}
 			
 			// Tells OpenGL to use this camera
 			guiCam.use();

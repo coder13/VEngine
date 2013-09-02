@@ -2,6 +2,7 @@ package com.virtuel;
 
 import org.lwjgl.Sys;
 
+/** Handles delta and fps. */
 public class Time {
 
 	private static double delta;
