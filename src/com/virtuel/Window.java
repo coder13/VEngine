@@ -38,6 +38,11 @@ public class Window {
 	}
 	
 	
+	public Window setTitle(String title) {
+		Title = title;
+		return this;
+	}
+	
 	public Window setSize(int width, int height) throws LWJGLException {
 		Width = width;
 		Height = height;
@@ -45,7 +50,6 @@ public class Window {
 		HEIGHT = height;
 		return this;
 	}
-	
 	
 	public Window setFullScreen(boolean fullScreen) {
 		FullScreen = fullScreen;
