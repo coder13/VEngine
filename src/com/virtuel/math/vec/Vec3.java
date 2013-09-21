@@ -18,6 +18,18 @@ public abstract class Vec3<N> {
 
 		}
 
+		public i(Vec3.i orig) {
+			X = orig.X;
+			Y = orig.Y;
+			Z = orig.Z;
+		}
+
+		public i(int xyz) {
+			X = xyz;
+			Y = xyz;
+			Z = xyz;
+		}
+
 		@Override
 		public Vec3.i scale(Integer a) {
 			return new Vec3.i(X * a, Y * a, Z * a);

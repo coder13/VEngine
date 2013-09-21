@@ -110,7 +110,7 @@ public abstract class Engine implements IEngine {
 			}
 			
 			// Draws the game as long as there is a game to draw and its ready 
-			if (currentGame != null && currentGame.ready()) {
+			if (currentGame != null && currentGame.isReady()) {
 				if (!Paused)
 					currentGame.update();
 			}
@@ -120,7 +120,7 @@ public abstract class Engine implements IEngine {
 			
 			update();
 			
-			if (currentGame != null && currentGame.ready()) {
+			if (currentGame != null && currentGame.isReady()) {
 				currentGame.getCam().use();
 				currentGame.drawGame();
 				
@@ -144,7 +144,7 @@ public abstract class Engine implements IEngine {
 			error |= checkForGLErrors("Menu Draw");
 
 			// Rendering the GameUI. Topmost layer.
-			if (currentGame!=null && currentGame.ready()){
+			if (currentGame!=null && currentGame.isReady()){
 				currentGame.drawUI();
 			}
 			error |= checkForGLErrors("GameUI Draw");

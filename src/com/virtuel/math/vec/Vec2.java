@@ -10,6 +10,11 @@ public abstract class Vec2<N> {
 			super(0, 0);
 		}
 
+		public i(Vec2.i orig) {
+			X = orig.X;
+			Y = orig.Y;
+		}
+		
 		public i(int x, int y) {
 			super(x, y);
 
@@ -89,6 +94,11 @@ public abstract class Vec2<N> {
 			super(0.0f, 0.0f);
 		}
 
+		public f(Vec2.f orig) {
+			X = orig.X;
+			Y = orig.Y;
+		}
+		
 		public f(float x, float y) {
 			super(x, y);
 		}
@@ -161,6 +171,11 @@ public abstract class Vec2<N> {
 			super(0.0, 0.0);
 		}
 
+		public d(Vec2.d orig) {
+			X = orig.X;
+			Y = orig.Y;
+		}
+		
 		public d(double x, double y) {
 			super(x, y);
 		}
@@ -237,6 +252,11 @@ public abstract class Vec2<N> {
 	public Vec2() {
 	}
 
+	public Vec2(Vec2<N> orig) {
+		X = orig.X;
+		Y = orig.Y;
+	}
+	
 	public Vec2(N x, N y) {
 		X = x;
 		Y = y;
@@ -295,7 +315,7 @@ public abstract class Vec2<N> {
 		return new Vec2.i((int) VMath.floor(vec.X), (int) VMath.floor(vec.Y));
 	}
 
-	public static Vec2.i floor(Vec3.f vec) {
+	public static Vec2.i floor(Vec2.f vec) {
 		return new Vec2.i((int) VMath.floor(vec.X), (int) VMath.floor(vec.Y));
 	}
 

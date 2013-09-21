@@ -103,7 +103,7 @@ public abstract class Renderer {
 		setColor(r, g, b, 1);
 	}
 	
-	public void setColor(Color color){
+	public void setColor(Color color) {
 		setColor(color.R, color.G, color.B, color.A);
 	}
 	

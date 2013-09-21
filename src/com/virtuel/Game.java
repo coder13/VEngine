@@ -4,7 +4,7 @@ import com.virtuel.rendering.FontRenderer;
 
 public abstract class Game {
 
-	protected Engine parentEngine;
+	protected Engine Parent;
 
 	protected boolean hasStarted = false;
 	
@@ -13,7 +13,7 @@ public abstract class Game {
 	protected String Name;
 	
 	public Game(Engine parent, String name) {
-		parentEngine = parent;
+		Parent = parent;
 		fontRender = new FontRenderer();
 		Name = name;
 	}
@@ -33,6 +33,11 @@ public abstract class Game {
 	public abstract void drawUI();
 	
 	
+	protected void ready() {
+		hasStarted = true;
+	}
+	
+	
 	public String getName(){
 		return Name;
 	}
@@ -41,7 +46,7 @@ public abstract class Game {
 		return hasStarted;
 	}
 	
-	public boolean ready(){
+	public boolean isReady() {
 		return hasStarted && cam!=null && fontRender!=null;
 	}
 	
@@ -54,7 +59,7 @@ public abstract class Game {
 	}
 	
 	public Engine getParent(){
-		return parentEngine;
+		return Parent;
 	}
 	
 }

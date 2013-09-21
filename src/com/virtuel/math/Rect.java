@@ -18,6 +18,11 @@ public abstract class Rect<t> {
 			return false;
 		}
 
+		@Override
+		public Vec2.i dist(Vec2<Integer> point) {
+			return new Vec2.i((X+Width)-point.X, (Y+Height)-point.Y);
+		}
+		
 	}
 	
 	public static class d extends Rect<Double> {
@@ -34,6 +39,10 @@ public abstract class Rect<t> {
 			return false;
 		}
 
+		@Override
+		public Vec2.d dist(Vec2<Double> point) {
+			return new Vec2.d((X+Width)-point.X, (Y+Height)-point.Y);
+		}
 	}
 
 	public static class f extends Rect<Float> {
@@ -50,6 +59,11 @@ public abstract class Rect<t> {
 			return false;
 		}
 
+		@Override
+		public Vec2.f dist(Vec2<Float> point) {
+			return new Vec2.f((X+Width)-point.X, (Y+Height)-point.Y);
+		}
+		
 	}
 	
 	public t X,Y,Width,Height;
@@ -63,8 +77,17 @@ public abstract class Rect<t> {
 	
 	public abstract boolean isPointInside(Vec2<t> point);
 	
+	public abstract Vec2<t> dist(Vec2<t> point);
+	
+	
 	@Override
 	public String toString(){
 		return "[" + X.toString() + "," + Y.toString() + " | " + Width + "/" + Height + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Rect<?> rect = (obj instanceof Rect<?> ? (Rect<?>) obj : null);
+		return (rect == null ? null : (X == rect.X && Y == rect.Y && Width == rect.Width && Height == rect.Height));
 	}
 }

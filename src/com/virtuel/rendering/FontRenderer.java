@@ -158,23 +158,16 @@ public class FontRenderer {
 	}
 
 	private int drawChar(char c) {
-		boolean draw;
 		int ic = (int) c;
 		float cWidth = getCharLength(c);
 		float cx = (ic & 15) * 16f, cy = (ic >> 4) * 16f, cw = cWidth;
 
-		if (draw = !render.isDrawing) {
-			render.beginQuads();
-			glBindTexture(GL_TEXTURE_2D, TextureID);
-		}
 		render.setColor(font.color);
 		render.addVertexWithUV(pos.X, 		   pos.Y, 				2.0, (cx) * fs, 	 (cy) * fs);
 		render.addVertexWithUV(pos.X + cWidth, pos.Y, 				2.0, (cx + cw) * fs, (cy) * fs);
 		render.addVertexWithUV(pos.X + cWidth, pos.Y + font.Width,  2.0, (cx + cw) * fs, (cy + font.Size) * fs);
 		render.addVertexWithUV(pos.X, 		   pos.Y + font.Height, 2.0, (cx) * fs, 	 (cy + font.Size) * fs);
-		if (draw)
-			render.draw();
-
+		
 		return (int) cWidth;
 	}
 
